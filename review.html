@@ -6,8 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type='text/javascript' src='unitegallery/js/jquery-11.0.min.js'></script>
     <script type='text/javascript' src='unitegallery/js/unitegallery.min.js'></script>
-    <script type='text/javascript' src='unitegallery/js/ug-theme-carousel.js'></script>
-    <script type='text/javascript' src='unitegallery/js/ug-theme-slider.js'></script>
+    <script type='text/javascript'>
+        $.ajax({
+            type: "GET",
+            url: "unitegallery/js/ug-theme-carousel.js",
+            dataType: "script"
+        });
+    </script>
+    <!-- <script type='text/javascript' src='unitegallery/js/ug-theme-slider.js'></script> -->
     <link rel='stylesheet' href='unitegallery/css/style.css' type='text/css'>
     <link rel="stylesheet" href="main.css">
     <title>AAA Capital</title>
@@ -24,23 +30,19 @@
         <div id="gallery" style="display:none;">
 
             <a href="http://unitegallery.net">
-                <img alt="1" src="unitegallery/images/thumbs/thumb1.jpg" data-image="unitegallery/images/big/1.jpg"
-                    style="display:none">
+                <img alt="1" src="unitegallery/images/thumbs/thumb1.jpg" data-image="unitegallery/images/big/1.jpg" style="display:none">
             </a>
 
             <a href="http://unitegallery.net">
-                <img alt="2" src="unitegallery/images/thumbs/thumb2.jpg" data-image="unitegallery/images/big/2.jpg"
-                    style="display:none">
+                <img alt="2" src="unitegallery/images/thumbs/thumb2.jpg" data-image="unitegallery/images/big/2.jpg" style="display:none">
             </a>
 
             <a href="http://unitegallery.net">
-                <img alt="3" src="unitegallery/images/thumbs/thumb3.jpg" data-image="unitegallery/images/big/3.jpg"
-                    style="display:none">
+                <img alt="3" src="unitegallery/images/thumbs/thumb3.jpg" data-image="unitegallery/images/big/3.jpg" style="display:none">
             </a>
 
             <a href="http://unitegallery.net">
-                <img alt="4" src="unitegallery/images/thumbs/thumb4.jpg" data-image="unitegallery/images/big/4.jpg"
-                    style="display:none">
+                <img alt="4" src="unitegallery/images/thumbs/thumb4.jpg" data-image="unitegallery/images/big/4.jpg" style="display:none">
             </a>
 
         </div>
@@ -50,12 +52,10 @@
     </div>
 
     <script type="text/javascript">
-
-        jQuery(document).ready(function () {
+        jQuery(document).ready(function() {
 
             jQuery("#gallery").unitegallery();
         });
-
     </script>
 
 

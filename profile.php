@@ -7,8 +7,40 @@ require_once 'sessionstart.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type='text/javascript' src='unitegallery/js/jquery-11.0.min.js'></script>
     <link rel="stylesheet" href="main.css">
     <title>AAA Capital</title>
+    <script>
+
+        workers();
+
+        function workers() {
+            $.ajax({
+                type: "POST", // метод передачи данных
+                url: "data.xml", // путь к xml файлу
+                dataType: "xml", // тип данных
+                // если получили данные из файла
+                success: function(data) {
+                    var html = "";
+                    // перебираем все теги person
+                    $(data).find('worker').each(function() {
+                        var name = $(this).find('name').html() 
+                        var position = $(this).find('position').html();
+                        html += "<p>Штат співробітників: </p>";
+                        html += "<label>Ім'я співробітника: " + name + "</label><br/>";
+                        html += "<label>Посада: " + position + "</label><br/>";
+                        html += "<hr/>";
+                    });
+                    $('#content_div').html(html); // выводим данные
+                },
+                // если произошла ошибка при получении файла
+                error: function() {
+                    alert('ERROR');
+                }
+
+            });
+        }
+    </script>
 
 </head>
 
@@ -52,6 +84,7 @@ require_once 'sessionstart.php';
             </div>
         </header>
         <div style="margin-left: 10px">
+        <div id="content_div"></div>
             <h3>Вітаємо, вас обслуговує менеджер <?php
                                                     $link = mysqli_connect($host, $user, $password, $database)
                                                         or die("Ошибка " . mysqli_error($link));

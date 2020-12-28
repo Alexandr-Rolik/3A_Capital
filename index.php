@@ -1,10 +1,8 @@
 <?php
-if(isset($_GET['lang'])){
+if (isset($_GET['lang'])) {
     $language = $_GET['lang'];
-    setcookie("lang", $language, time()+15552000000);
-}
-
-elseif (isset($_COOKIE['lang'])){
+    setcookie("lang", $language, time() + 15552000000);
+} elseif (isset($_COOKIE['lang'])) {
     $host  = $_SERVER['HTTP_HOST'];
     $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
     $extra = 'index.php?lang=';
@@ -12,6 +10,7 @@ elseif (isset($_COOKIE['lang'])){
     header("Location: http://$host$uri/$extra$lang");
     exit;
 }
+
 ?>
 
 <?php
@@ -19,13 +18,14 @@ include('lang/lang.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="ru" >
+<html lang="ru">
 
 <head>
-	<meta charset ="UTF-8">
-	<title>AAA Capital</title>
-	<link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>AAA Capital</title>
+    <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
     <?php
     require_once 'connect.php';
@@ -47,7 +47,7 @@ include('lang/lang.php');
         $check1 = mysqli_query($link, "SELECT * FROM user WHERE login = '$login'") or die("Ошибка " . mysqli_error($link));
         $check2 = mysqli_query($link, "SELECT * FROM user WHERE email = '$email'") or die("Ошибка " . mysqli_error($link));
         $check3 = mysqli_query($link, "SELECT * FROM user WHERE phone = '$phone'") or die("Ошибка " . mysqli_error($link));
-        
+
         $rows1 = mysqli_num_rows($check1);
         $rows2 = mysqli_num_rows($check2);
         $rows3 = mysqli_num_rows($check3);
@@ -61,7 +61,6 @@ include('lang/lang.php');
                 echo $lang['alert'];
                 echo "<script>document.location.href = 'login.php'</script>";
             }
-            
         } else {
             echo $lang['alertdenie'];
         }
@@ -75,24 +74,24 @@ include('lang/lang.php');
                 <a href="index.php?lang=ua" onclick="alert('Обрана мова - Українська')"><img src="images/langboxes/ukr.png" height="30"></a>
                 <a href="index.php?lang=ru" onclick="alert('Выбранный язык - Русский')"><img src="images/langboxes/rus.png" height="30"></a>
                 <a href="index.php?lang=eng" onclick="alert('Chosen language - English')"><img src="images/langboxes/eng.png" height="30"></a><br>
-                <a class="link" href="page.html"><?=$lang['page1']?></a>
-                <a class="link" href="table.html"><?=$lang['page2']?></a>
+                <a class="link" href="page.html"><?= $lang['page1'] ?></a>
+                <a class="link" href="table.html"><?= $lang['page2'] ?></a>
             </div>
         </header>
         <div class="slogan">
-            <p><?=$lang['slogan']?></p>
-            <?=$lang['wish']?>
+            <p><?= $lang['slogan'] ?></p>
+            <?= $lang['wish'] ?>
         </div>
         <div style="padding-left: 10px;">
-            <a class="link" href="review.html"><?=$lang['review1']?></a>
-            <a class="link" href="review2.html"><?=$lang['review2']?></a>
-            <a class="link" href="review3.html"><?=$lang['review3']?></a>
+            <a class="link" href="review.html"><?= $lang['review1'] ?></a>
+            <a class="link" href="review2.html"><?= $lang['review2'] ?></a>
+            <a class="link" href="review3.html"><?= $lang['review3'] ?></a>
         </div>
 
         <div class="table">
             <div>
                 <table border="1">
-                    <?=$lang['table']?>
+                    <?= $lang['table'] ?>
                     </tr>
                 </table>
             </div>
@@ -111,14 +110,14 @@ include('lang/lang.php');
                     <p><input type="submit" onclick="message()"></p>
                 </fieldset>
             </form> -->
-            <?=$lang['regform']?>
+            <?= $lang['regform'] ?>
         </div>
         <div>
-            <a class="link" href="login.php"><?=$lang['loginbtn']?></a> 
+            <a class="link" href="login.php"><?= $lang['loginbtn'] ?></a>
         </div>
         <div class="list">
             <div class="container">
-                <?=$lang['recomendations']?>
+                <?= $lang['recomendations'] ?>
             </div>
         </div>
         <div>
@@ -130,12 +129,10 @@ include('lang/lang.php');
             <a target="_blank" href="https://www.pinterest.com" class="fa fa-pinterest"></a>
         </div>
         <div id="minfin-informer-m1Fn-currency" class="informer">
-            <?=$lang['informer']?>
+            <?= $lang['informer'] ?>
         </div>
         <script>
-            var iframe = '<ifra' + 'me width="275" height="120" fram' + 'eborder="0" src="https://informer.minfin.com.ua/gen/course/?color=yellow" vspace="0" scrolling="no" hspace="0" allowtransparency="true"style="width:275px;height:120px;ove' + 'rflow:hidden;"></iframe>';
-            var cl = 'minfin-informer-m1Fn-currency';
-            document.getElementById(cl).innerHTML = iframe;
+            
         </script>
     </div>
     <div class="weather">
@@ -171,4 +168,5 @@ include('lang/lang.php');
         </script>
     </div>
 </body>
+
 </html>
